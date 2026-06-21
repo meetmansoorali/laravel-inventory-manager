@@ -51,9 +51,10 @@
             tr.id = `row-${rowId}`;
 
             let options = '<option value="">-- Select Product --</option>';
-            products.forEach(p => {
-                options += `<option value="${p.id}">${p.name} ($${p.price}) - Stock: ${p.stock_quantity}</option>`;
-            });
+         // Look for where options are built inside your script tag, switch to Rs. formatting:
+products.forEach(p => {
+    options += `<option value="${p.id}">${p.name} (Rs. ${Number(p.price).toLocaleString()}) - Stock left: ${p.stock_quantity}</option>`;
+});
 
             tr.innerHTML = `
                 <td>

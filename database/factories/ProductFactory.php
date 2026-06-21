@@ -15,13 +15,21 @@ class ProductFactory extends Factory
      *
      * @return array<string, mixed>
      */
-   public function definition(): array
+public function definition(): array
 {
+    $pakistaniProducts = [
+        'Dal Chana (1kg)', 'Daal Mash (1kg)', 'Basmati Rice Premium (5kg)', 
+        'Tapal Danedar Tea (430g)', 'National Chili Powder (200g)', 'Shan Biryani Masala', 
+        'Olper\'s Milk (1 Litre)', 'Sufi Sunflower Oil (5 Litre)', 'Rooh Afza (800ml)',
+        'Mitchell\'s Mixed Fruit Jam', 'National Tomato Ketchup', 'Sui Gas Pipe 10ft',
+        'Sooper Biscuits Family Pack', 'Rio Biscuits Box', 'National Kasuri Methi'
+    ];
+
     return [
-        'name' => $this->faker->words(2, true),
-        'sku' => strtoupper($this->faker->unique()->lexify('???-???')),
-        'price' => $this->faker->randomFloat(2, 10, 500),
-        'stock_quantity' => $this->faker->numberBetween(2, 50),
+        'name' => $this->faker->randomElement($pakistaniProducts) . ' ' . $this->faker->randomDigitNotNull(),
+        'sku' => strtoupper($this->faker->unique()->lexify('PAK-???')),
+        'price' => $this->faker->randomElement([180, 250, 340, 450, 850, 1200, 2450]),
+        'stock_quantity' => $this->faker->numberBetween(5, 60),
     ];
 }
 }
